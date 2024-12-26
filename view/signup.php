@@ -11,15 +11,13 @@
 </head>
 
 <body class="w-full h-screen bg-gray-100 flex items-center flex-col gap-28 ">
-
-    <!-- Barre de navigation -->
     <nav class="bg-blue-600 w-full py-3 shadow-lg text-white ">
         <div class="container mx-auto text-center">
             <h1 class="text-xl font-bold">TaskFlow - Application web simple de gestion de tâches</h1>
         </div>
     </nav>
 
-    <!-- Formulaire de connexion -->
+
     <div class="bg-white p-6 rounded shadow-lg w-96  mt-20">
         <form action="#" method="post" class="space-y-4">
             <div class="flex flex-col">
@@ -34,9 +32,9 @@
             </div>
             <div>
                 <button type="submit"
-                    class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">Se connecter</button>
+                    class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">cree un compte</button>
             </div>
-            <a class=" text-green-500 p-2  rounded hover:text-green-700" href="signup.php">increvez</a>
+         
         </form>
     </div>
 
