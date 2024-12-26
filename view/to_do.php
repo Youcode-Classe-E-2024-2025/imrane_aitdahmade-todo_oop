@@ -94,7 +94,7 @@
     <section id="users" class="container mx-auto mt-8">
         <h2 class="text-xl font-bold mb-4">Liste des Utilisateurs</h2>
         <ul class="bg-white p-4 shadow rounded">
-            <li class="border-b py-2">Utilisateur 1</li>
+            <li class="border-b py-2"></li>
           
          
         </ul>
