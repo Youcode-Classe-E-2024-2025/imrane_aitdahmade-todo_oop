@@ -21,7 +21,7 @@
 
     <!-- Formulaire de connexion -->
     <div class="bg-white p-6 rounded shadow-lg w-96  mt-20">
-        <form action="#" method="post" class="space-y-4">
+        <form action="../controller/acceptelogin.php" method="post" class="space-y-4">
             <div class="flex flex-col">
                 <label for="username" class="text-sm font-medium">Nom d'utilisateur</label>
                 <input type="text" id="username" name="username" placeholder="Entrez votre nom"
