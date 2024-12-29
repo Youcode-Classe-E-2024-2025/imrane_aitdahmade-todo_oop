@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $user = new UserController();
     if ($user->login($username, $password)) {
-        $_SESSION['username'] = $username;
-        echo "Vous êtes connecté.".$username ;
+        header('Location: ../view/admin.php');
+        exit();
     } else {
         $_SESSION['error'] = 'Invalid username or password.';
         header('Location: ../view/login.php');
+        exit();
     }
 }
-?>

@@ -54,6 +54,7 @@ class UserController {
             $_SESSION['username'] = $user['nom'];
             return true;
         }
+        
         return false;
     }
 }

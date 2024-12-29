@@ -14,11 +14,11 @@
             <h1 class="text-xl font-bold">Hello </h1>
         </div>
     </nav>
-<div class="bg-blue-500 w-20 h-20 py-3 shadow-lg flex justify-center items-center rounded-full justify-self-center hover:bg-blue-800  mb-4 ">
+<div class="bg-blue-500 w-20 h-20 py-3 shadow-lg flex justify-center items-center rounded-full justify-self-center hover:bg-blue-800  mb-4 " id="addTask">
 <img src="../_images/add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.png" alt="">
 </div>
 
-    <div class="max-w-lg mx-auto bg-white p-6 rounded shadow-md hidden  p-full">
+    <div class="max-w-lg mx-auto bg-white p-6 rounded shadow-md   p-full" id="formulaireAjout">
     <h2 class="text-2xl font-bold mb-4 text-gray-800 text-center">Ajouter une Nouvelle Tâche</h2>
     <form id="taskForm" class="space-y-4">
         <!-- Titre de la tâche -->
@@ -67,7 +67,7 @@
 
         <!-- Bouton Ajouter -->
         <div>
-            <button type="submit"
+            <button type="submit" 
                 class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">Ajouter la Tâche</button>
         </div>
     </form>
@@ -110,4 +110,5 @@
     </div>
 </div>
 </body>
+<script src="script.js"></script>
 </html>
