@@ -96,4 +96,5 @@ class TACHES
             echo "Erreur lors de la suppression de la tache.";
         }
     }
+    
 }

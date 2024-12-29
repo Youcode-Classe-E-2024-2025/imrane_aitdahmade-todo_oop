@@ -20,7 +20,7 @@
 
     <div class="max-w-lg mx-auto bg-white p-6 rounded shadow-md   p-full" id="formulaireAjout">
     <h2 class="text-2xl font-bold mb-4 text-gray-800 text-center">Ajouter une Nouvelle Tâche</h2>
-    <form id="taskForm" class="space-y-4">
+    <form id="taskForm" action="../controller/ajouter_tache.php" class="space-y-4" method="POST">
         <!-- Titre de la tâche -->
         <div>
             <label for="title" class="block text-sm font-medium text-gray-700">Titre de la tâche</label>
