@@ -40,17 +40,21 @@ class UserController {
             echo "Erreur lors de l'ajout de l'utilisateur.";
         }
     }
-    public function login($nom ,$password){
+    public function login($nom, $password) {     
         $sql = "SELECT * FROM USER WHERE nom = :nom";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':nom', $nom);
         $stmt->execute();
-        $user = $stmt->fetch();
-        if ($user && password_verify($password, $user['password'])) {
-            echo "Vous êtes connecté.";
-        } else {
-            echo "Nom d'utilisateur ou mot de passe incorrect.";
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        dd($user);
+        if ($user && password_verify($password, $user['PASSWORD'])) {
+            dd($user);
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['username'] = $user['nom'];
+            return true;
         }
+        return false;
     }
 }
 ?>
