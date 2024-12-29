@@ -1,77 +1,99 @@
 <?php
 
-class Task
+class TACHES
 {
     protected $id;
-    protected $title;
+    protected $nom;
     protected $description;
+    protected $Attribue;
     protected $status;
-    protected $assignedTo;
-    protected $createdAt;
+    protected $type;
     protected $conn;
-
-    public function __construct($title, $description, $assignedTo)
+    public function __construct($nom, $description, $Attribue, $status, $type)
     {
-        $this->title = $title;
+        $this->nom = $nom;
         $this->description = $description;
-        $this->assignedTo = $assignedTo;
-        $this->status = 'pending';
-        $this->createdAt = date('Y-m-d H:i:s');
-
-        // Initialize database connection
-        Connection::init("localhost", "root", "", "GESTION_DES_TACHES");
-        $this->conn = Connection::getConnection();
+        $this->Attribue = $Attribue;
+        $this->status = $status;
+        $this->type = $type;
     }
-
-    public function save()
+    public function getNom()
     {
-        $sql = "INSERT INTO tasks (title, description, status, assigned_to, created_at) 
-                VALUES (:title, :description, :status, :assigned_to, :created_at)";
-        $stmt = $this->conn->prepare($sql);
-
-        return $stmt->execute([
-            ':title' => $this->title,
-            ':description' => $this->description,
-            ':status' => $this->status,
-            ':assigned_to' => $this->assignedTo,
-            ':created_at' => $this->createdAt
-        ]);
-    }
-
-    public function updateStatus($newStatus)
-    {
-        $this->status = $newStatus;
-        $sql = "UPDATE tasks SET status = :status WHERE id = :id";
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute([
-            ':status' => $newStatus,
-            ':id' => $this->id
-        ]);
-    }
-
-    // Getters and setters
-    public function getId()
-    {
-        return $this->id;
-    }
-    public function getTitle()
-    {
-        return $this->title;
+        return $this->nom;
     }
     public function getDescription()
     {
         return $this->description;
     }
+    public function getAttribue()
+    {
+        return $this->Attribue;
+    }
     public function getStatus()
     {
         return $this->status;
     }
-    public function getAssignedTo()
+    public function getType()
     {
-        return $this->assignedTo;
+        return $this->type;
     }
-    public function getCreatedAt()
+    public function addTache()
     {
-        return $this->createdAt;
+        $sql = "INSERT INTO TACHES (nom, description, Attribue, status, type) VALUES (:nom, :description, :Attribue, :status, :type)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nom', $this->nom);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':Attribue', $this->Attribue);
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':type', $this->type);
+        if ($stmt->execute()) {
+            echo "Tache ajouté avec succès.";
+        } else {
+            echo "Erreur lors de l'ajout de la tache.";
+        }
+    }
+    public function getTaches()
+    {
+        $sql = "SELECT * FROM TACHES";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $taches = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $taches;
+    }
+    public function getTache($id)
+    {
+        $sql = "SELECT * FROM TACHES WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $tache = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $tache;
+    }
+    public function updateTache($id)
+    {
+        $sql = "UPDATE TACHES SET nom = :nom, description = :description, Attribue = :Attribue, status = :status, type = :type WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nom', $this->nom);
+        $stmt->bindParam(':description', $this->description);
+        $stmt->bindParam(':Attribue', $this->Attribue);
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':type', $this->type);
+        $stmt->bindParam(':id', $id);
+        if ($stmt->execute()) {
+            echo "Tache modifié avec succès.";
+        } else {
+            echo "Erreur lors de la modification de la tache.";
+        }
+    }
+    public function deleteTache($id)
+    {
+        $sql = "DELETE FROM TACHES WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        if ($stmt->execute()) {
+            echo "Tache supprimé avec succès.";
+        } else {
+            echo "Erreur lors de la suppression de la tache.";
+        }
     }
 }
